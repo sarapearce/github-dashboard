@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import axios from 'axios';
+import DataTable from './sections/table';
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      'data': ''
+    };
+  }
+  componentDidMount() {
+    axios.get('https://api.github.com/users/defunkt')
+      .then(res => {
+        console.log(res.data)
+        this.setState({ 
+          avatar: res.data.avatar_url,
+          login: res.data.login,
+          blog: res.data.blog,
+          bio: res.data.bio
+         });
+      });
+  }
+
+  createDataTable() {
+    return <DataTable github_data={this.state.data} />
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div className="App-header">
+          <h2>Here I was</h2>
+        </div>
+          <React.Fragment>
+          {this.createDataTable()}
+        </React.Fragment> 
+      </div >
+    );
+  }
 }
 
 export default App;
