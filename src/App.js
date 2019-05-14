@@ -16,19 +16,24 @@ class App extends Component {
       .then(res => {
         console.log(res.data)
         this.setState({ 
-          avatar: res.data.avatar_url,
-          login: res.data.login,
-          blog: res.data.blog,
-          bio: res.data.bio
+          data: {
+            avatar: res.data.avatar_url,
+            login: res.data.login,
+            blog: res.data.blog,
+            bio: res.data.bio
+          }
          });
       });
   }
 
   createDataTable() {
+    console.log(this.state.data);
     return <DataTable github_data={this.state.data} />
   }
 
   render() {
+
+
     return (
       <div className="App">
         <div className="App-header">

@@ -7,6 +7,14 @@ import TableRow from '@material-ui/core/TableRow';
  class DataTable extends Component {
 
    render() {
+    const github_data = this.props.github_data.map((item) => {
+      return <TableCell>{item}</TableCell>;
+    });
+
+    const headers = this.props.github_data.map((item) => {
+      return <TableCell>HEADER</TableCell>;
+    });
+
     return (
       <React.Fragment>
         <Table>
@@ -15,9 +23,7 @@ import TableRow from '@material-ui/core/TableRow';
                 <TableCell>ITEM</TableCell>
               </TableRow>
               <TableRow>
-                {this.props.github_data.map((data) => {
-                  <TableCell>{data}</TableCell>
-                })}
+              {github_data}
               </TableRow>
           </TableBody>
         </Table>
