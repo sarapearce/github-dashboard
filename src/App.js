@@ -28,7 +28,7 @@ class App extends Component {
 
   createDataTable() {
     console.log(this.state.data);
-    return <DataTable github_data={this.state.data} />
+    return <DataTable github_data={ this.state.data } />;
   }
 
   render() {
@@ -37,7 +37,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Here I was</h2>
+          <h2>Title</h2>
         </div>
           <React.Fragment>
           {this.createDataTable()}

@@ -57,7 +57,7 @@ const rows = [
 
 class EnhancedTableHead extends React.Component {
   createSortHandler = property => event => {
-    this.props.onRequestSort(event, property);
+    this.props.onRequestSort(event, property)
   };
 
   render() {
